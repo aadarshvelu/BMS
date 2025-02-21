@@ -2,7 +2,7 @@
 
 - **GO Version: 1.23.4**
 - **Go Package: github.com/aadarshvelu/bms**
-- **API Documentation: [github.com/aadarshvelu/bms](http://13.203.8.233/docs/index.html#/books)**
+- **API Documentation: [BMS API](http://13.203.8.233/docs/index.html#/books)**
 
 ## Tech Stack
 - Go
