@@ -52,8 +52,6 @@ func CreateBook(c *gin.Context) {
 		return
 	}
 
-	// Invalidate books list cache
-
 	// Invalidate both caches
 	if err := cache.InvalidateBooks(); err != nil {
 		logger.LogError("Failed to invalidate books cache", err)

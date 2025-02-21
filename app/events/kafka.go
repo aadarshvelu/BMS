@@ -12,6 +12,7 @@ import (
 var (
 	producer sarama.SyncProducer
 	topic    = "book_events"
+	enabled  = false // Track if Kafka is enabled
 )
 
 type BookEvent struct {
@@ -31,12 +32,20 @@ func InitKafka() {
 	var err error
 	producer, err = sarama.NewSyncProducer(brokers, kafkaConfig)
 	if err != nil {
-		log.Printf("Failed to initialize Kafka producer: %v", err)
+		log.Printf("Kafka producer initialization failed, events will be disabled: %v", err)
+		enabled = false
+		return
 	}
+	enabled = true
 }
 
-// PublishBookEvent sends a book event to Kafka
+// PublishBookEvent sends a book event to Kafka if enabled
 func PublishBookEvent(eventType string, bookID uint, data interface{}) error {
+	if !enabled {
+		log.Printf("Kafka events disabled, skipping event: %s for book %d", eventType, bookID)
+		return nil
+	}
+
 	event := BookEvent{
 		EventType: eventType,
 		BookID:    bookID,
