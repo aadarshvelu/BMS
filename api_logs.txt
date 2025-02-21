@@ -1,0 +1,244 @@
+[2025/02/21 - 09:26:00] (POST) /api/v1/books - 201 
+Payload: {
+    "title": "aadarsh",
+    "author": "velu",
+    "year": 2002
+} 
+Response: {Data:{ID:29 Title:aadarsh Author:velu Year:2002 CreatedAt:2025-02-21 09:26:00.1565468 +0530 IST UpdatedAt:2025-02-21 09:26:00.1565468 +0530 IST IsActive:true} Message:Book created successfully Status:201}
+
+[2025/02/21 - 09:26:15] (PUT) /api/v1/books/26 - 200 
+Payload: {
+    "title": "The Go Programming Language",
+    "author": "Test"
+    
+} 
+Response: {Data:{ID:26 Title:The Go Programming Language Author:Test Year:2002 CreatedAt:2025-02-21 09:19:20.189807 +0530 IST UpdatedAt:2025-02-21 09:26:15.973028 +0530 IST IsActive:true} Message:Book updated successfully Status:200}
+
+[2025/02/21 - 09:26:27] (DELETE) /api/v1/books/16 - 200 
+Payload: nil 
+Response: {Data:<nil> Message:Book deleted successfully Status:200}
+
+[2025/02/21 - 09:27:58] (PUT) /api/v1/books/26 - 200 
+Payload: {
+    "title": "The Go Programming Language",
+    "author": "Test"
+    
+} 
+Response: {Data:{ID:26 Title:The Go Programming Language Author:Test Year:2002 CreatedAt:2025-02-21 09:19:20.189807 +0530 IST UpdatedAt:2025-02-21 09:27:58.8225295 +0530 IST IsActive:true} Message:Book updated successfully Status:200}
+
+[2025/02/21 - 09:28:04] (PUT) /api/v1/books/26 - 400 
+Payload: {
+    "title": "The Go Programming Language",
+    "author": 23
+    
+} 
+Response: {ErrorMessage:Invalid request: cannot unmarshal number into Go struct field UpdateBookPayload.author of type string Status:400}
+
+[2025/02/21 - 09:28:22] (PUT) /api/v1/books/26 - 400 
+Payload: {
+    "title": "The Go Programming Language",
+    "author": "Test",
+    "year": "206"
+} 
+Response: {ErrorMessage:Invalid request: cannot unmarshal string into Go struct field UpdateBookPayload.year of type int Status:400}
+
+[2025/02/21 - 09:37:49] (PUT) /api/v1/books/26 - 400 
+Payload: {
+    "title": "The Go Programming Language",
+    "author": "Test",
+    "year": "206"
+} 
+Response: {ErrorMessage:Invalid year Status:400}
+
+[2025/02/21 - 09:38:04] (PUT) /api/v1/books/26 - 400 
+Payload: {
+    "title": "The Go Programming Language",
+    "author": 123,
+    "year": "206"
+} 
+Response: {ErrorMessage:Invalid author Status:400}
+
+[2025/02/21 - 09:38:10] (PUT) /api/v1/books/26 - 400 
+Payload: {
+    "title": "The Go Programming Language",
+    "author": "",
+    "year": "206"
+} 
+Response: {ErrorMessage:Invalid year Status:400}
+
+[2025/02/21 - 09:38:16] (PUT) /api/v1/books/26 - 400 
+Payload: {
+    "title": "The Go Programming Language",
+    "author": "",
+    "year": 206
+} 
+Response: {ErrorMessage:Author must be between 1 and 256 characters Status:400}
+
+[2025/02/21 - 09:38:50] (PUT) /api/v1/books/26 - 400 
+Payload: {
+    "title": "The Go Programming Language",
+    "author": "",
+    "year": 206
+} 
+Response: {ErrorMessage:Author name must be between 1 and 256 characters Status:400}
+
+[2025/02/21 - 09:48:27] (POST) /api/v1/books - 201 
+Payload: {
+    "title": "aadarsh",
+    "author": "velu",
+    "year": 2002
+} 
+Response: {Data:{ID:62 Title:aadarsh Author:velu Year:2002 CreatedAt:2025-02-21 09:48:26.434168 +0530 IST UpdatedAt:2025-02-21 09:48:26.434168 +0530 IST IsActive:true} Message:Book created successfully Status:201}
+
+[2025/02/21 - 09:52:09] (PUT) /api/v1/books/26 - 400 
+Payload: {
+    "title": "The Go Programming Language",
+    "author": "",
+    "year": 206
+} 
+Response: {ErrorMessage:Author name must be between 1 and 256 characters Status:400}
+
+[2025/02/21 - 09:52:18] (PUT) /api/v1/books/26 - 200 
+Payload: {
+    "title": "The Go Programming Language",
+    "author": "Test",
+    "year": 206
+} 
+Response: {Data:{ID:26 Title:The Go Programming Language Author:Test Year:206 CreatedAt:2025-02-21 09:19:20.189807 +0530 IST UpdatedAt:2025-02-21 09:52:18.4454616 +0530 IST IsActive:true} Message:Book updated successfully Status:200}
+
+[2025/02/21 - 09:52:32] (DELETE) /api/v1/books/26 - 200 
+Payload: nil 
+Response: {Data:<nil> Message:Book deleted successfully Status:200}
+
+[2025/02/21 - 11:34:03] (GET) /api/v1/books?page=1&pagesize=2 - 200 
+Payload: nil 
+Response: {Data:0xc000122e10 Message:Books retrieved successfully Status:200}
+
+[2025/02/21 - 11:34:18] (GET) /api/v1/books?page=234523423&pagesize=2 - 200 
+Payload: nil 
+Response: {Data:0xc0001f6410 Message:Books retrieved successfully Status:200}
+
+[2025/02/21 - 11:35:57] (GET) /api/v1/books?page=2&pagesize=5 - 200 
+Payload: nil 
+Response: {Data:0xc0001f6410 Message:Books retrieved successfully Status:200}
+
+[2025/02/21 - 11:36:03] (GET) /api/v1/books?page=22&pagesize=5 - 200 
+Payload: nil 
+Response: {Data:0xc0001f6500 Message:Books retrieved successfully Status:200}
+
+[2025/02/21 - 11:36:13] (GET) /api/v1/books?page=1&pagesize=5 - 200 
+Payload: nil 
+Response: {Data:0xc0007d00f0 Message:Books retrieved successfully Status:200}
+
+[2025/02/21 - 11:36:21] (GET) /api/v1/books?page=3&pagesize=5 - 200 
+Payload: nil 
+Response: {Data:0xc0007d01e0 Message:Books retrieved successfully Status:200}
+
+[2025/02/21 - 11:36:54] (GET) /api/v1/books?page=3&pagesize=5 - 200 
+Payload: nil 
+Response: {Data:0xc0006e2190 Message:Books retrieved successfully Status:200}
+
+[2025/02/21 - 11:37:17] (GET) /api/v1/books?page=2&pagesize=2 - 200 
+Payload: nil 
+Response: {Data:0xc0006e22d0 Message:Books retrieved successfully Status:200}
+
+[2025/02/21 - 11:37:41] (POST) /api/v1/books - 400 
+Payload: {
+  "author": "Test",
+  "title": "Teset",
+  "year": 0
+} 
+Response: {ErrorMessage:Key: 'CreateBookPayload.Year' Error:Field validation for 'Year' failed on the 'required' tag Status:400}
+
+[2025/02/21 - 11:37:58] (POST) /api/v1/books - 201 
+Payload: {
+  "author": "Test",
+  "title": "Teset",
+  "year": 234
+} 
+Response: {Data:{ID:63 Title:Teset Author:Test Year:234 CreatedAt:2025-02-21 11:37:58.9699372 +0530 IST UpdatedAt:2025-02-21 11:37:58.9699372 +0530 IST IsActive:true} Message:Book created successfully Status:201}
+
+[2025/02/21 - 11:38:03] (POST) /api/v1/books - 400 
+Payload: {
+  "author": "Test",
+  "title": "Teset",
+  "year": 2342
+} 
+Response: {ErrorMessage:Year must be between 1 and 2025 Status:400}
+
+[2025/02/21 - 11:39:55] (POST) /api/v1/books - 400 
+Payload: {
+  "author": "cx",
+  "title": "zx",
+  "year": 0
+} 
+Response: {ErrorMessage:Key: 'CreateBookPayload.Year' Error:Field validation for 'Year' failed on the 'required' tag Status:400}
+
+[2025/02/21 - 11:41:01] (PUT) /api/v1/books/33 - 400 
+Payload: {
+  "author": "string",
+  "title": "string",
+  "year": 0
+} 
+Response: {ErrorMessage:Year must be between 1 and 2025 Status:400}
+
+[2025/02/21 - 11:41:22] (PUT) /api/v1/books/33 - 404 
+Payload: {
+  "author": "string",
+  "title": "string",
+  "year": 23
+} 
+Response: {ErrorMessage:record not found Status:404}
+
+[2025/02/21 - 11:41:35] (PUT) /api/v1/books/31 - 404 
+Payload: {
+  "author": "string",
+  "title": "string",
+  "year": 23
+} 
+Response: {ErrorMessage:record not found Status:404}
+
+[2025/02/21 - 11:41:40] (PUT) /api/v1/books/21 - 200 
+Payload: {
+  "author": "string",
+  "title": "string",
+  "year": 23
+} 
+Response: {Data:{ID:21 Title:string Author:string Year:23 CreatedAt:2025-02-21 09:08:29.335672 +0530 IST UpdatedAt:2025-02-21 11:41:40.5414961 +0530 IST IsActive:true} Message:Book updated successfully Status:200}
+
+[2025/02/21 - 11:41:55] (DELETE) /api/v1/books/2134 - 404 
+Payload: nil 
+Response: {ErrorMessage:Book not found Status:404}
+
+[2025/02/21 - 11:41:58] (DELETE) /api/v1/books/2134 - 404 
+Payload: nil 
+Response: {ErrorMessage:Book not found Status:404}
+
+[2025/02/21 - 11:42:02] (DELETE) /api/v1/books/21 - 200 
+Payload: nil 
+Response: {Data:<nil> Message:Book deleted successfully Status:200}
+
+[2025/02/21 - 11:42:54] (POST) /api/v1/books - 201 
+Payload: {
+  "author": "cx",
+  "title": "zx",
+  "year": 22
+} 
+Response: {Data:{ID:64 Title:zx Author:cx Year:22 CreatedAt:2025-02-21 11:42:54.1416786 +0530 IST UpdatedAt:2025-02-21 11:42:54.1416786 +0530 IST IsActive:true} Message:Book created successfully Status:201}
+
+[2025/02/21 - 11:44:40] (POST) /api/v1/books - 400 
+Payload: {
+    "title": "aadarsh",
+    "author": "velu",
+    "year": 0
+} 
+Response: {ErrorMessage:Year is required and must be greater than 0 Status:400}
+
+[2025/02/21 - 11:44:46] (POST) /api/v1/books - 201 
+Payload: {
+    "title": "aadarsh",
+    "author": "velu",
+    "year": 22
+} 
+Response: {Data:{ID:65 Title:aadarsh Author:velu Year:22 CreatedAt:2025-02-21 11:44:46.3723234 +0530 IST UpdatedAt:2025-02-21 11:44:46.3723234 +0530 IST IsActive:true} Message:Book created successfully Status:201}
+

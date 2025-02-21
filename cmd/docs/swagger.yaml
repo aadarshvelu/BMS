@@ -1,0 +1,266 @@
+definitions:
+  helpers.ErrorResponse:
+    properties:
+      errorMessage:
+        type: string
+      status:
+        type: integer
+    type: object
+  helpers.ResponseOk:
+    properties:
+      data: {}
+      message:
+        type: string
+      status:
+        type: integer
+    type: object
+  models.Book:
+    properties:
+      author:
+        type: string
+      createdAt:
+        type: string
+      id:
+        type: integer
+      isActive:
+        type: boolean
+      title:
+        type: string
+      updatedAt:
+        type: string
+      year:
+        type: integer
+    type: object
+  repo.CreateBookPayload:
+    properties:
+      author:
+        type: string
+      title:
+        type: string
+      year:
+        type: integer
+    required:
+    - author
+    - title
+    - year
+    type: object
+  repo.UpdateBookPayload:
+    properties:
+      author:
+        type: string
+      title:
+        type: string
+      year:
+        type: integer
+    type: object
+  services.BooksPaginationResponse:
+    properties:
+      books:
+        items:
+          $ref: '#/definitions/models.Book'
+        type: array
+      pagination:
+        $ref: '#/definitions/services.Pagination'
+    type: object
+  services.Pagination:
+    properties:
+      currentPage:
+        type: integer
+      currentPagesize:
+        type: integer
+      nextPage:
+        type: integer
+      prevPage:
+        type: integer
+      totalPages:
+        type: integer
+      totalRecords:
+        type: integer
+    type: object
+info:
+  contact: {}
+  title: Book Management System API
+paths:
+  /api/v1/books:
+    get:
+      description: Retrieves a list of all books from the system
+      parameters:
+      - description: Page number (default 1)
+        in: query
+        name: page
+        type: integer
+      - description: Number of books per page (default 10)
+        in: query
+        name: pagesize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/services.BooksPaginationResponse'
+        "400":
+          description: Invalid parameters
+          schema:
+            $ref: '#/definitions/helpers.ErrorResponse'
+        "500":
+          description: Server error
+          schema:
+            $ref: '#/definitions/helpers.ErrorResponse'
+      summary: Get all books
+      tags:
+      - books
+    post:
+      consumes:
+      - application/json
+      description: |-
+        Create a new book in the system with the following validations:
+        - Title: Required, length between 1 and 512 characters
+        - Author: Required, length between 1 and 256 characters
+        - Year: Required, must not be in the future
+      parameters:
+      - description: Book details
+        in: body
+        name: book
+        required: true
+        schema:
+          $ref: '#/definitions/repo.CreateBookPayload'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created book with success message
+          schema:
+            $ref: '#/definitions/models.Book'
+        "400":
+          description: Invalid request or missing required fields
+          schema:
+            $ref: '#/definitions/helpers.ErrorResponse'
+        "500":
+          description: Server error
+          schema:
+            $ref: '#/definitions/helpers.ErrorResponse'
+      summary: Create a new book
+      tags:
+      - books
+  /api/v1/books/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a book by its ID
+      parameters:
+      - description: Book ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helpers.ResponseOk'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helpers.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/helpers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helpers.ErrorResponse'
+      summary: Delete a book
+      tags:
+      - books
+    get:
+      description: Retrieves a specific book by its ID
+      parameters:
+      - description: Book ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/helpers.ResponseOk'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Book'
+              type: object
+        "400":
+          description: Invalid ID
+          schema:
+            $ref: '#/definitions/helpers.ErrorResponse'
+        "404":
+          description: Book not found
+          schema:
+            $ref: '#/definitions/helpers.ErrorResponse'
+      summary: Get a book by ID
+      tags:
+      - books
+    put:
+      consumes:
+      - application/json
+      description: |-
+        Update an existing book in the system
+        - Title length should be between 1 and 512 characters
+        - Author length should be between 1 and 256 characters
+        - Year must not be in the future
+      parameters:
+      - description: Book ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Book details
+        in: body
+        name: book
+        required: true
+        schema:
+          $ref: '#/definitions/repo.UpdateBookPayload'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helpers.ResponseOk'
+        "400":
+          description: Invalid request or validation error
+          schema:
+            $ref: '#/definitions/helpers.ErrorResponse'
+        "404":
+          description: Book not found
+          schema:
+            $ref: '#/definitions/helpers.ErrorResponse'
+        "500":
+          description: Server error
+          schema:
+            $ref: '#/definitions/helpers.ErrorResponse'
+      summary: Update a book
+      tags:
+      - books
+  /api/v1/ping:
+    get:
+      description: Returns a simple message indicating the system is running
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success response with message
+          schema:
+            $ref: '#/definitions/helpers.ResponseOk'
+      summary: Health check endpoint
+      tags:
+      - system
+swagger: "2.0"
