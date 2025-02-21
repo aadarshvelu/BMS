@@ -86,4 +86,4 @@
 - logs are captured and stored in **api_logs.txt** in root
 - Kafka Events preview:
 
-![alt text](image.png)
+![Kafka Preview](kafka_event_preview.png)
