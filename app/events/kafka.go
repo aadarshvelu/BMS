@@ -27,7 +27,7 @@ func InitKafka() {
 	kafkaConfig.Producer.Return.Successes = true
 	kafkaConfig.Producer.RequiredAcks = sarama.WaitForAll
 
-	brokers := []string{config.GetEnv("KAFKA_BROKER", "localhost:9092")}
+	brokers := []string{config.GetEnv("KAFKA_BROKER", "localhost:9092")} // fallback 
 
 	var err error
 	producer, err = sarama.NewSyncProducer(brokers, kafkaConfig)
