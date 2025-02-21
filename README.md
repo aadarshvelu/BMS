@@ -41,7 +41,7 @@
 
 ## Using Docker
 
-- Kakfa, Redis, Postgres are already declared in dockerfile
+- Kakfa, Redis, Postgres are already declared in docker compose
 - Initialize .env.docker with your docker credentials
 
 #### 1. Install Docker & Docker-compose:
