@@ -57,6 +57,7 @@ func CreateBook(c *gin.Context) {
 		logger.LogError("Failed to invalidate books cache", err)
 	}
 
+	// publish an event to kafka
 	if err := events.PublishBookEvent("CREATE", record.ID, record); err != nil {
 		logger.LogError("Failed to publish book creation event", err)
 	}

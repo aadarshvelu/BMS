@@ -68,7 +68,8 @@ func UpdateBook(c *gin.Context) {
 	if err := cache.InvalidateBook(id); err != nil {
 		logger.LogError("Failed to invalidate book cache", err)
 	}
-
+	
+	// publish an event to kafka
 	if err := events.PublishBookEvent("UPDATE", record.ID, record); err != nil {
 		logger.LogError("Failed to publish book update event", err)
 	}

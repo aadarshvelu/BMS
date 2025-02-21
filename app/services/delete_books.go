@@ -52,7 +52,8 @@ func DeleteBook(c *gin.Context) {
 	if err := cache.InvalidateBook(id); err != nil {
 		logger.LogError("Failed to invalidate book cache", err)
 	}
-
+	
+	// publish an event to kafka
 	if err := events.PublishBookEvent("DELETE", uint(id), nil); err != nil {
 		logger.LogError("Failed to publish book deletion event", err)
 	}
