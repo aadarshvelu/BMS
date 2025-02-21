@@ -25,7 +25,6 @@ RUN apk --no-cache add ca-certificates
 
 # Copy the compiled binary
 COPY --from=builder /app/main .
-COPY --from=builder /app/.env .env
 
 # Expose port 8080
 EXPOSE 8080
