@@ -242,3 +242,31 @@ Payload: {
 } 
 Response: {Data:{ID:65 Title:aadarsh Author:velu Year:22 CreatedAt:2025-02-21 11:44:46.3723234 +0530 IST UpdatedAt:2025-02-21 11:44:46.3723234 +0530 IST IsActive:true} Message:Book created successfully Status:201}
 
+[2025/02/21 - 14:57:16] (GET) /api/v1/books - 200 
+Payload: nil 
+Response: {Data:0xc00057a2d0 Message:Books retrieved successfully Status:200}
+
+[2025/02/21 - 15:04:00] (POST) /api/v1/books - 201 
+Payload: {
+    "title": "av",
+    "author": "te",
+    "year": 1332
+} 
+Response: {Data:{ID:68 Title:av Author:te Year:1332 CreatedAt:2025-02-21 15:04:00.7907804 +0530 IST UpdatedAt:2025-02-21 15:04:00.7907804 +0530 IST IsActive:true} Message:Book created successfully Status:201}
+
+[2025/02/21 - 15:04:17] (POST) /api/v1/books - 201 
+Payload: {
+  "author": "zc",
+  "title": "cxz",
+  "year": 34
+} 
+Response: {Data:{ID:69 Title:cxz Author:zc Year:34 CreatedAt:2025-02-21 15:04:17.7949263 +0530 IST UpdatedAt:2025-02-21 15:04:17.7949263 +0530 IST IsActive:true} Message:Book created successfully Status:201}
+
+[2025/02/21 - 15:06:17] (POST) /api/v1/books - 201 
+Payload: {
+    "title": "av",
+    "author": "te",
+    "year": 1332
+} 
+Response: {Data:{ID:70 Title:av Author:te Year:1332 CreatedAt:2025-02-21 15:06:17.0894668 +0530 IST UpdatedAt:2025-02-21 15:06:17.0894668 +0530 IST IsActive:true} Message:Book created successfully Status:201}
+
