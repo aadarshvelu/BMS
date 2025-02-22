@@ -26,22 +26,6 @@ Payload: {
 } 
 Response: {Data:{ID:26 Title:The Go Programming Language Author:Test Year:2002 CreatedAt:2025-02-21 09:19:20.189807 +0530 IST UpdatedAt:2025-02-21 09:27:58.8225295 +0530 IST IsActive:true} Message:Book updated successfully Status:200}
 
-[2025/02/21 - 09:28:04] (PUT) /api/v1/books/26 - 400 
-Payload: {
-    "title": "The Go Programming Language",
-    "author": 23
-    
-} 
-Response: {ErrorMessage:Invalid request: cannot unmarshal number into Go struct field UpdateBookPayload.author of type string Status:400}
-
-[2025/02/21 - 09:28:22] (PUT) /api/v1/books/26 - 400 
-Payload: {
-    "title": "The Go Programming Language",
-    "author": "Test",
-    "year": "206"
-} 
-Response: {ErrorMessage:Invalid request: cannot unmarshal string into Go struct field UpdateBookPayload.year of type int Status:400}
-
 [2025/02/21 - 09:37:49] (PUT) /api/v1/books/26 - 400 
 Payload: {
     "title": "The Go Programming Language",
@@ -142,14 +126,6 @@ Response: {Data:0xc0006e2190 Message:Books retrieved successfully Status:200}
 Payload: nil 
 Response: {Data:0xc0006e22d0 Message:Books retrieved successfully Status:200}
 
-[2025/02/21 - 11:37:41] (POST) /api/v1/books - 400 
-Payload: {
-  "author": "Test",
-  "title": "Teset",
-  "year": 0
-} 
-Response: {ErrorMessage:Key: 'CreateBookPayload.Year' Error:Field validation for 'Year' failed on the 'required' tag Status:400}
-
 [2025/02/21 - 11:37:58] (POST) /api/v1/books - 201 
 Payload: {
   "author": "Test",
@@ -165,14 +141,6 @@ Payload: {
   "year": 2342
 } 
 Response: {ErrorMessage:Year must be between 1 and 2025 Status:400}
-
-[2025/02/21 - 11:39:55] (POST) /api/v1/books - 400 
-Payload: {
-  "author": "cx",
-  "title": "zx",
-  "year": 0
-} 
-Response: {ErrorMessage:Key: 'CreateBookPayload.Year' Error:Field validation for 'Year' failed on the 'required' tag Status:400}
 
 [2025/02/21 - 11:41:01] (PUT) /api/v1/books/33 - 400 
 Payload: {
